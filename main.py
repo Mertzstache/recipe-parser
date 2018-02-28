@@ -52,7 +52,8 @@ def main():
         ingredients.append(str(li.string))
 
     for span in mySpansDir:
-        directions.append(str(span.string))
+        if span.string != None:
+            directions.append(str(span.string))
 
     output(ingredients,directions)
 
