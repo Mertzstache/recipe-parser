@@ -18,7 +18,7 @@ class ARParser():
 
 
 	def parse_recipe(self):
-		return Recipe(self._get_ingredients(), self._get_instructions())
+		return Recipe(self._get_ingredients(), self._get_instructions(), self._get_tools())
 
 
 
@@ -68,6 +68,10 @@ class ARParser():
 		# print(string)
 		return (quant, unit, name, descriptor, extra_instructions) # Nones are placeholders for descriptor, prep
 
+	def _process_tools(self, instructions):
+		paragraph = ' '.join(instructions)
+		return util.string_has_keywords_multiple(paragraph, constants.TOOLS)
+
 	def _get_ingredients(self):
 
 		section = self.soup.find('ul', id='lst_ingredients_1').find_all("span", {"itemprop" : "ingredients"})
@@ -77,10 +81,7 @@ class ARParser():
 
 
 	def _get_tools(self):
-
-		pass
-
-
+		return self._process_tools(self._get_instructions())
 
 	def _get_instructions(self):
 		section = self.soup.find('ol', {"class": "recipe-directions__list"}).find_all("span", {"class": "recipe-directions__list--item"})
