@@ -23,7 +23,7 @@ class ARParser():
 
 
 	def parse_recipe(self):
-		return Recipe(self._get_ingredients(), self._get_instructions(), self._get_tools())
+		return Recipe(self._get_ingredients(), self._get_instructions(), self._get_tools(), self._parse_instructions())
 
 
 
@@ -73,9 +73,30 @@ class ARParser():
 		# print(string)
 		return (quant, unit, name, descriptor, extra_instructions) # Nones are placeholders for descriptor, prep
 
+	def _parse_instruction_sentence(self, sentence):
+		properties = {}
+		keyword = util.string_has_keyword(sentence, constants.TIME)
+		if not keyword:
+			print("no time specified", sentence)
+			properties['time'] = 'no time specified'
+		else:
+			match = re.search(r"(?:(?!,).)*", sentence[sentence.index(keyword):])
+			time = match.group(0)
+			properties['time'] = str(time)
+		return properties
+
+
+
+
 	def _process_tools(self, instructions):
 		paragraph = ' '.join(instructions)
 		return util.string_has_keywords_multiple(paragraph, constants.TOOLS)
+
+	def _parse_instructions(self):
+		instructions_parsed = []
+		for i in ' '.join(self._get_instructions()).split('.'):
+			instructions_parsed.append(self._parse_instruction_sentence(i))
+		return instructions_parsed
 
 	def _get_ingredients(self):
 
@@ -83,7 +104,6 @@ class ARParser():
 		section += self.soup.find('ul', id='lst_ingredients_2').find_all("span", {"itemprop" : "ingredients"})
 
 		return [self._process_ingredient_string(ingred.text) for ingred in section]
-
 
 	def _get_tools(self):
 		return self._process_tools(self._get_instructions())

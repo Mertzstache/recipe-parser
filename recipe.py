@@ -6,11 +6,12 @@
 class Recipe():
     """class to keep track of recipe info"""
 
-    def __init__(self, ingredients, instructions, tools):
+    def __init__(self, ingredients, instructions, tools, parsed_instructions):
 
         self.ingredients = ingredients
         self.instructions = instructions
         self.tools = tools
+        self.parsed_instructions = parsed_instructions
 
         
 
@@ -28,6 +29,7 @@ class Recipe():
             return_me += item + "\n\n"
 
         return_me += 'TOOLS USED: ' + ', '.join(self.tools)
+        return_me += '\n\n\n' + str(self.parsed_instructions)
         return return_me
 
 
