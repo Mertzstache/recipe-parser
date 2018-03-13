@@ -10,6 +10,8 @@ TOOLS = ['dutch oven', 'pot', 'pan', 'baking dish', 'skillet', 'sheet', 'dish', 
     'mixing bowl', 'bowl', 'grill', 'nutcracker', 'ladle', 'cutter', 'scoop', 'griddle', 'cleaver', 'masher',
     'colander']
 
+TIME = ['for', 'until']
+
 METHODS = ["cut", "chop", "mince", "grate", "shake", "crush", "squeeze"]
 
 PRIMARY_METHODS = ["bake", "broil", "sautee", "fry", ]
