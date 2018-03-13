@@ -25,29 +25,48 @@ class ARParser():
 
 	def _process_ingredient_string(self, string):
 
+		name = ''
 		ind = 0
 		quant = None
+		extra_instructions = None
+		descriptor = []
 
 		match = re.match(r'[\d\/]+', string)
 		if match:
 			quant = match.group(0)
 			ind = match.end()
 
+		match = re.search(r'\(([^\)]+)\)', string)
+		if match:
+			descriptor.append(match.group(0))
+			string = string.replace(' ' + match.group(0), '')
+
 		keyword = util.string_has_keyword(string, constants.UNITS)
+
+		for i in range(0, len(string)):
+			if ',' in string[i]:
+				extra_instructions = string[(i+1):]
+
+
 
 		if not keyword:
 			print("couldn't find a unit of measurement for", string)
-			return (quant, string[ind:], string[ind:], None, None)
+			return (quant, string[ind:], string[ind:], None , extra_instructions)
 
+		
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
 		unit = match.group(1)
 
-		return (quant, unit, string[match.end():], None, None) # Nones are placeholders for descriptor, prep
+		end = len(string)
+		if ',' in string:
+			end = string.index(',')
+		temp, name = string[match.end():end].split(' ')[:-1], string[match.end():end].split(' ')[-1]
+		for d in temp:
+			descriptor.append(d)
 
-
-
-
-
+		#replaced with name string[match.end():]
+		# print(string)
+		return (quant, unit, name, descriptor, extra_instructions) # Nones are placeholders for descriptor, prep
 
 	def _get_ingredients(self):
 
