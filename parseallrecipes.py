@@ -40,7 +40,6 @@ class ARParser():
 		if match:
 			quant = match.group(1)
 			ind = match.end()
-			print(quant)
 
 		match = re.search(r'\(([^\)]+)\)', string)
 		if match:
@@ -54,7 +53,7 @@ class ARParser():
 				extra_instructions = string[(i+1):]
 
 		if not keyword:
-			print("couldn't find a unit of measurement for", string)
+			# print("couldn't find a unit of measurement for", string)
 			return [quant, string[ind:], string[ind:], None , extra_instructions]
 
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
@@ -73,10 +72,11 @@ class ARParser():
 
 	def _parse_instruction_sentence(self, sentence):
 		properties = {}
-		keyword = util.string_has_keyword(sentence, constants.TIME)
+		properties['step'] = sentence
 
+		keyword = util.string_has_keyword(sentence, constants.TIME)
 		if not keyword:
-			print("no time specified", sentence)
+			# print("no time specified", sentence)
 			properties['time'] = 'no time specified'
 		else:
 			match = re.search(r"(?:(?!,).)*", sentence[sentence.index(keyword):])
@@ -85,6 +85,13 @@ class ARParser():
 
 		tools_used = util.string_has_keywords_multiple(sentence, constants.TOOLS)
 		properties['tools'] = tools_used
+
+		primary_methods = util.string_has_keywords_multiple(sentence, constants.PRIMARY_METHODS)
+		properties['primary_methods'] = primary_methods
+
+		ingredients = [ingred[2] for ingred in self._get_ingredients() if ingred[2] != '']
+		ingredients = util.string_has_keywords_multiple(sentence, ingredients)
+		properties['ingredients'] = ingredients
 
 		return properties
 

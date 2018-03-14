@@ -11,8 +11,8 @@ class Recipe():
         self.ingredients = ingredients
         self.instructions = instructions
         self.tools = tools
-        self.parsed_instructions = parsed_instructions    
-        self.multiply_portion(2)    
+        self.parsed_instructions = parsed_instructions
+        self.multiply_portion(2)
 
     def __str__(self):
         """simple output function"""
@@ -32,7 +32,8 @@ class Recipe():
             return_me += '\n\n' + 'instruction ' + str(instruction) + ' ' + str(self.parsed_instructions[instruction])
         return return_me
 
-    def substitue_ingredient(self, previous, new):
+
+    def substitute_ingredient(self, previous, new):
         """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
         # self.ingredients.remove(previous)
         # self.ingredients.append(new)
@@ -51,5 +52,3 @@ class Recipe():
                 else:
                     output_arr.append(str(int(n)*multiplier))
             self.ingredients[i][0] = ' '.join(output_arr)
-
-
