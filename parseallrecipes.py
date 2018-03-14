@@ -3,6 +3,7 @@ import urllib
 import constants
 import re
 from bs4 import BeautifulSoup
+import ssl
 
 from recipe import Recipe
 
@@ -11,7 +12,11 @@ class ARParser():
 
 	def __init__(self, url):
 
-		response = urllib.request.urlopen(url)
+		ctx = ssl.create_default_context()
+		ctx.check_hostname = False
+		ctx.verify_mode = ssl.CERT_NONE
+
+		response = urllib.request.urlopen(url, context=ctx)
 		body = response.read()
 		self.soup = BeautifulSoup(body, 'html.parser')
 
@@ -53,7 +58,7 @@ class ARParser():
 			print("couldn't find a unit of measurement for", string)
 			return (quant, string[ind:], string[ind:], None , extra_instructions)
 
-		
+
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
 		unit = match.group(1)
 
@@ -127,5 +132,3 @@ class ARParser():
 
 	def _get_nutrition(self):
 		return self.soup.find("section", {"class": "recipe-footnotes"}).find_all("span", itemprop=True)
-
-
