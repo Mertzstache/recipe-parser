@@ -3,6 +3,7 @@
 """recipe class"""
 
 from constants import *
+import random
 
 class Recipe():
     """class to keep track of recipe info"""
@@ -37,7 +38,25 @@ class Recipe():
 
 
     def make_healthy(self):
-        self._substitute_ingredient(HEALTH_INGRED_SUB)
+        # self._substitute_ingredient(HEALTH_INGRED_SUB)
+
+        sub_map = []
+
+        for idx, ingred in enumerate(self.ingredients):
+            new_ingred = self._sub_key_pair(HEALTH_INGRED_SUB, ingred[2])
+
+            if new_ingred:
+                sub_map.append((ingred[2], new_ingred))
+                self.ingredients[idx][2] = new_ingred
+
+            else:
+                new_ingred = self._substitute_ingredient_class(ingred[2], MEAT, VEG_MEAT)
+
+                if new_ingred:
+                    sub_map.append((ingred[2], new_ingred))
+                    self.ingredients[idx][2] = new_ingred
+
+
 
     def make_vegetarian(self):
         pass
@@ -61,25 +80,29 @@ class Recipe():
 
 
 
+    # def _substitute_ingredient(self, pair_dict):
+    #     """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
+    #     # self.ingredients.remove(previous)
+    #     # self.ingredients.append(new)
+    #     #look through all instances in directions and replace as well
+
+    #     for idx, ingred in enumerate(self.ingredients):
+    #         self.ingredients[idx][2] = self._sub_key_pair(pair_dict, ingred[2])
+
 
     def _sub_key_pair(self, pair_dict, item):
         if item in pair_dict.keys():
             return pair_dict[item]
-        else:
-            return item
+        
+        return None
 
 
+    def _substitute_ingredient_class(self, ingred, from_class, to_class):
+        
+        if ingred in from_class:
+            return random.choice(to_class)
 
-
-
-    def _substitute_ingredient(self, pair_dict):
-        """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
-        # self.ingredients.remove(previous)
-        # self.ingredients.append(new)
-        #look through all instances in directions and replace as well
-
-        for idx, ingred in enumerate(self.ingredients):
-            self.ingredients[idx][2] = self._sub_key_pair(pair_dict, ingred[2])
+        return None
 
 
 
