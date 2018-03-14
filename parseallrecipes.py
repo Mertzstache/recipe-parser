@@ -71,6 +71,7 @@ class ARParser():
 	def _parse_instruction_sentence(self, sentence):
 		properties = {}
 		keyword = util.string_has_keyword(sentence, constants.TIME)
+
 		if not keyword:
 			print("no time specified", sentence)
 			properties['time'] = 'no time specified'
@@ -78,6 +79,10 @@ class ARParser():
 			match = re.search(r"(?:(?!,).)*", sentence[sentence.index(keyword):])
 			time = match.group(0)
 			properties['time'] = str(time)
+
+		tools_used = util.string_has_keywords_multiple(sentence, constants.TOOLS)
+		properties['tools'] = tools_used
+
 		return properties
 
 

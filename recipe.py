@@ -29,7 +29,8 @@ class Recipe():
             return_me += item + "\n\n"
 
         return_me += 'TOOLS USED: ' + ', '.join(self.tools)
-        return_me += '\n\n\n' + str(self.parsed_instructions)
+        for instruction in range(len(self.parsed_instructions)):
+            return_me += '\n\n' + 'instruction ' + str(instruction) + ' ' + str(self.parsed_instructions[instruction])
         return return_me
 
 

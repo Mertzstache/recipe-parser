@@ -7,10 +7,9 @@ def string_has_keyword(string, keyword_list):
 
 def string_has_keywords_multiple(string, keyword_list):
 	keywords_in_string = []
-
+	copy_of_string = string[:].lower()
 	for keyword in keyword_list:
-		if keyword in string.lower():
+		if keyword in copy_of_string:
 			keywords_in_string.append(keyword)
-			string = string.replace(keyword, '')
-
+			copy_of_string = copy_of_string.replace(keyword, '')
 	return keywords_in_string
