@@ -89,9 +89,13 @@ class ARParser():
 		primary_methods = util.string_has_keywords_multiple(sentence, constants.PRIMARY_METHODS)
 		properties['primary_methods'] = primary_methods
 
+		other_methods = util.string_has_keywords_multiple(sentence, constants.OTHER_METHODS)
+		properties['other_methods'] = other_methods
+
 		ingredients = [ingred[2] for ingred in self._get_ingredients() if ingred[2] != '']
 		ingredients = util.string_has_keywords_multiple(sentence, ingredients)
 		properties['ingredients'] = ingredients
+
 
 		return properties
 

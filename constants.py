@@ -12,10 +12,9 @@ TOOLS = ['dutch oven', 'pot', 'pan', 'baking dish', 'skillet', 'baking sheet', '
 
 TIME = ['for', 'until']
 
-METHODS = ["cut", "chop", "mince", "grate", "shake", "crush", "squeeze"]
+PRIMARY_METHODS = ["stir fry", "deep fry", "pan fry", "bake", "broil", "sautee", "saute", "fry", "roast", "boil", "poach", "steam", "grill", "smoke", "braise", "barbecue", "barbeque",  "simmer", "sear", "steep", "blanch", "cook"]
 
-PRIMARY_METHODS = ["bake", "broil", "sautee", "fry", "roast", "boil", "poach", "steam", "grill", "baste"]
-
+OTHER_METHODS = ["stir", "preheat", "chop", "grate", "mix", "crush", "mince", "squeeze", "shake", "flatten", "marinate", "whisk", "caramelize", "glaze", "wash", "cut", "slice", "microwave", "blend", "pickle", "stuff", "melt", "whip", "cool", "spread", "drain", "combine", "baste", "spoon"]
 
 MEAT = ["pork", "beef", "chicken", "lamb", "fish", "salmon", "trout", "tuna", "mutton", "anchovy", "sausage"]
 
@@ -61,5 +60,5 @@ HEALTH_INGRED_SUB = {
 }
 
 HEALTH_TYPE_SUB = {
-	
+
 }
