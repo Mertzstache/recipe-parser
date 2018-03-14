@@ -53,7 +53,7 @@ HERBS = [
 
 
 HEALTH_INGRED_SUB = {
-	"olive oil": "butter",
+	"butter": "olive oil",
 	"water": "vodka",
 	"beef": "chicken",
 	"chicken": "fish"

@@ -45,11 +45,8 @@ class Recipe():
 
     def transform_ingred(self, ttype):
 
-        # (from_type, to_type) = INGRED_TRANSFORM[ttype]
-
-        # for ingred in self.ingredients:
-
-        pass
+        for ingred in self.ingredients:
+            print(ingred)
 
 
 

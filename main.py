@@ -24,8 +24,13 @@ def main():
 
     parser = ARParser(url)
     recipe = parser.parse_recipe()
-    if len(sys.argv) > 1:
-    	transform(sys.argv[1])
+
+
+    
+
+
+    # if len(sys.argv) > 1:
+    # 	transform(sys.argv[1])
 
     print(recipe)
 
