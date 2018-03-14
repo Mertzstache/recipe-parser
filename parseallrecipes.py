@@ -54,7 +54,7 @@ class ARParser():
 
 		if not keyword:
 			# print("couldn't find a unit of measurement for", string)
-			return [quant, string[ind:], string[ind:], descriptor ,extra_instructions]
+			return [quant, string[ind+1:], string[ind+1:], string.split(' ') ,extra_instructions]
 
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
 		unit = match.group(1)
@@ -93,7 +93,7 @@ class ARParser():
 		properties['other_methods'] = other_methods
 
 		ingredients = [ingred[2] for ingred in self._get_ingredients() if ingred[2] != '']
-		ingredients = util.string_has_keywords_multiple(sentence, ingredients)
+		ingredients = util.string_has_keywords_any(sentence, ingredients)
 		properties['ingredients'] = ingredients
 
 
