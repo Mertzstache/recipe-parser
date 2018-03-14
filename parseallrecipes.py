@@ -36,10 +36,11 @@ class ARParser():
 		extra_instructions = None
 		descriptor = []
 
-		match = re.match(r'[\d\/]+', string)
+		match = re.match(r'^((\d+( \d+/\d+)?)|(\d+/\d+))( (.+))?', string) #chagned from [\d\/]+
 		if match:
-			quant = match.group(0)
+			quant = match.group(1)
 			ind = match.end()
+			print(quant)
 
 		match = re.search(r'\(([^\)]+)\)', string)
 		if match:
@@ -52,12 +53,9 @@ class ARParser():
 			if ',' in string[i]:
 				extra_instructions = string[(i+1):]
 
-
-
 		if not keyword:
 			print("couldn't find a unit of measurement for", string)
-			return (quant, string[ind:], string[ind:], None , extra_instructions)
-
+			return [quant, string[ind:], string[ind:], None , extra_instructions]
 
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
 		unit = match.group(1)
@@ -71,7 +69,7 @@ class ARParser():
 
 		#replaced with name string[match.end():]
 		# print(string)
-		return (quant, unit, name, descriptor, extra_instructions) # Nones are placeholders for descriptor, prep
+		return [quant, unit, name, descriptor, extra_instructions] # Nones are placeholders for descriptor, prep
 
 	def _parse_instruction_sentence(self, sentence):
 		properties = {}
@@ -116,7 +114,6 @@ class ARParser():
 	def _get_instructions(self):
 		section = self.soup.find('ol', {"class": "recipe-directions__list"}).find_all("span", {"class": "recipe-directions__list--item"})
 		return [item.text for item in section]
-
 
 	def _get_prep_time(self):
 		return self.soup.find("time", {"itemprop": "prepTime"})["datetime"]

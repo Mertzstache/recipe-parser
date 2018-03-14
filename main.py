@@ -9,11 +9,11 @@ from recipe import Recipe
 
 
 def main():
-    
-    """main function - default google.com"""
-    
-    url = "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/"
 
+    """main function - default google.com"""
+    # url = "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/"
+
+    url = "https://www.allrecipes.com/recipe/256753/irish-soda-bread-muffins/?internalSource=staff%20pick&referringId=197&referringContentType=recipe%20hub"
     if len(sys.argv) > 1:
         url = sys.argv[1]
 
