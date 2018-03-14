@@ -14,8 +14,6 @@ class Recipe():
         self.tools = tools
         self.parsed_instructions = parsed_instructions
 
-        
-
     def __str__(self):
         """simple output function"""
         return_me = "\nINGREDIENTS\n\n"
@@ -30,18 +28,19 @@ class Recipe():
             return_me += item + "\n\n"
 
         return_me += 'TOOLS USED: ' + ', '.join(self.tools)
-        for instruction in range(len(self.parsed_instructions)):
+        for instruction in range(len(self.parsed_instructions) - 1):
             return_me += '\n\n' + 'instruction ' + str(instruction) + ' ' + str(self.parsed_instructions[instruction])
         return return_me
 
 
-    def substitue_ingredient(self, previous, new):
+    def substitute_ingredient(self, previous, new):
         """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
         # self.ingredients.remove(previous)
         # self.ingredients.append(new)
         #look through all instances in directions and replace as well
 
         pass
+
 
 
     def transform_ingred(self, ttype):
@@ -54,5 +53,14 @@ class Recipe():
 
 
 
-
-
+    def multiply_portion(self, multiplier):
+        """takes in integer multiplier"""
+        for i,ing in enumerate(self.ingredients):
+            numbers = ing[0].split(' ')
+            output_arr = []
+            for n in numbers:
+                if "/" in n:
+                    output_arr.append(n.replace(n[0], str(int(n[0])*multiplier)))
+                else:
+                    output_arr.append(str(int(n)*multiplier))
+            self.ingredients[i][0] = ' '.join(output_arr)

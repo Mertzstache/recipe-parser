@@ -1,9 +1,9 @@
 
 
-UNITS = ['tablespoons', 'tablespoon', 'ounces', 'cloves', 
+UNITS = ['tablespoons', 'tablespoon', 'ounces', 'cloves',
 'teaspoons', 'teaspoon', 'inch', 'ounce', 'piece', 'can', 'cup', 'cups', 'package', 'pounds', 'pound']
 
-TOOLS = ['dutch oven', 'pot', 'pan', 'baking dish', 'skillet', 'sheet', 'dish', 'oven', 'rice cooker', 'pressure cooker'
+TOOLS = ['dutch oven', 'pot', 'pan', 'baking dish', 'skillet', 'baking sheet', 'sheet', 'dish', 'oven', 'rice cooker', 'pressure cooker'
     'grater', 'a whisk', 'a spoon', 'a fork', 'tongs', 'spatula', 'peeler', 'thermometer', 'a funnel',
     'knife', 'baking', 'dish', 'a press', 'grater', 'scissors', 'mortar', 'pestle', 'slotted spoon',
     'measuring cup', 'zester', 'sink', 'cakepan', 'board', 'strainer', 'tray', 'blender', 'mitts',
@@ -14,7 +14,7 @@ TIME = ['for', 'until']
 
 METHODS = ["cut", "chop", "mince", "grate", "shake", "crush", "squeeze"]
 
-PRIMARY_METHODS = ["bake", "broil", "sautee", "fry"]
+PRIMARY_METHODS = ["bake", "broil", "sautee", "fry", "roast", "boil", "poach", "steam", "grill", "baste"]
 
 
 MEAT = ["pork", "beef", "chicken", "lamb", "fish", "salmon", "trout", "tuna", "mutton", "anchovy", "sausage"]
