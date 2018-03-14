@@ -26,7 +26,7 @@ def main():
     recipe = parser.parse_recipe()
 
 
-    
+    recipe.make_healthy()
 
 
     # if len(sys.argv) > 1:

@@ -56,7 +56,8 @@ HEALTH_INGRED_SUB = {
 	"butter": "olive oil",
 	"water": "vodka",
 	"beef": "chicken",
-	"chicken": "fish"
+	"chicken": "fish",
+	"cheese": "vegan cheese"
 }
 
 HEALTH_TYPE_SUB = {

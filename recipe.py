@@ -35,7 +35,7 @@ class Recipe():
 
 
     def make_healthy(self):
-        pass
+        self._substitute_ingredient(HEALTH_INGRED_SUB)
 
     def make_vegetarian(self):
         pass
@@ -60,13 +60,24 @@ class Recipe():
 
 
 
-    def _substitute_ingredient(self, previous, new):
+    def _sub_key_pair(self, pair_dict, item):
+        if item in pair_dict.keys():
+            return pair_dict[item]
+        else:
+            return item
+
+
+
+
+
+    def _substitute_ingredient(self, pair_dict):
         """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
         # self.ingredients.remove(previous)
         # self.ingredients.append(new)
         #look through all instances in directions and replace as well
 
-        pass
+        for idx, ingred in enumerate(self.ingredients):
+            self.ingredients[idx][2] = self._sub_key_pair(pair_dict, ingred[2])
 
 
 
