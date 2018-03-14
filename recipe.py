@@ -56,6 +56,8 @@ class Recipe():
                     sub_map.append((ingred[2], new_ingred))
                     self.ingredients[idx][2] = new_ingred
 
+            self.ingredients[idx][2] = "free-range organic non-gmo gluten-free " + self.ingredients[idx][2]
+
 
 
     def make_vegetarian(self):
