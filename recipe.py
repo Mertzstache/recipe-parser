@@ -28,8 +28,10 @@ class Recipe():
             return_me += item + "\n\n"
 
         return_me += 'TOOLS USED: ' + ', '.join(self.tools)
-        for instruction in range(len(self.parsed_instructions) - 1):
-            return_me += '\n\n' + 'instruction ' + str(instruction) + ' ' + str(self.parsed_instructions[instruction])
+        for i,instruction in enumerate(self.parsed_instructions[:-1]):
+            return_me += '\n\n' + 'Step ' + str(i + 1) + ':'
+            for k in instruction.keys():
+                return_me += "\n\t" + k + ": " + str(instruction[k])
         return return_me
 
 
@@ -74,7 +76,3 @@ class Recipe():
 
         for ingred in self.ingredients:
             print(ingred)
-
-
-
-    

@@ -26,12 +26,11 @@ def main():
     recipe = parser.parse_recipe()
 
 
-    
+
 
 
     # if len(sys.argv) > 1:
     # 	transform(sys.argv[1])
-
     print(recipe)
 
 

@@ -108,7 +108,7 @@ class ARParser():
 
 	def _parse_instructions(self):
 		instructions_parsed = []
-		for i in ' '.join(self._get_instructions()).split('.'):
+		for i in ' '.join(self._get_instructions()).split('. '):
 			instructions_parsed.append(self._parse_instruction_sentence(i))
 		return instructions_parsed
 
