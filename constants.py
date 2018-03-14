@@ -14,6 +14,6 @@ TIME = ['for', 'until']
 
 METHODS = ["cut", "chop", "mince", "grate", "shake", "crush", "squeeze"]
 
-PRIMARY_METHODS = ["bake", "broil", "sautee", "fry"]
+PRIMARY_METHODS = ["bake", "broil", "sautee", "fry", "roast", "boil", "poach", "steam", "grill", "baste"]
 
 MEAT = ["pork", "beef", "chicken", "lamb", "fish", "salmon", "trout", "tuna", "mutton", "anchovy", "sausage"]
