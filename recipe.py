@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """recipe class"""
 
+from constants import *
 
 class Recipe():
     """class to keep track of recipe info"""
@@ -41,3 +42,17 @@ class Recipe():
         #look through all instances in directions and replace as well
 
         pass
+
+
+    def transform_ingred(self, ttype):
+
+        # (from_type, to_type) = INGRED_TRANSFORM[ttype]
+
+        # for ingred in self.ingredients:
+
+        pass
+
+
+
+
+
