@@ -15,7 +15,7 @@ def main():
     # url = "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/"
     def transform(x):
 	    return {
-	        'double': recipe.multiply_portion(2),
+	        'double': recipe.multiply_portion(2)
 	    }[x]
 
     url = "https://www.allrecipes.com/recipe/256753/irish-soda-bread-muffins/?internalSource=staff%20pick&referringId=197&referringContentType=recipe%20hub"

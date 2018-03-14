@@ -39,7 +39,7 @@ class ARParser():
 		match = re.match(r'^((\d+( \d+/\d+)?)|(\d+/\d+))( (.+))?', string) #chagned from [\d\/]+
 		if match:
 			quant = match.group(1)
-			ind = match.end()
+			ind = string.index(quant) + len(quant)
 			print(quant)
 
 		match = re.search(r'\(([^\)]+)\)', string)
@@ -55,7 +55,7 @@ class ARParser():
 
 		if not keyword:
 			print("couldn't find a unit of measurement for", string)
-			return [quant, string[ind:], string[ind:], None , extra_instructions]
+			return [quant, string[ind:], string[ind:], descriptor ,extra_instructions]
 
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
 		unit = match.group(1)
