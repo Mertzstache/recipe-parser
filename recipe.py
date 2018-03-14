@@ -12,7 +12,6 @@ class Recipe():
         self.instructions = instructions
         self.tools = tools
         self.parsed_instructions = parsed_instructions
-        self.multiply_portion(2)
 
     def __str__(self):
         """simple output function"""
@@ -42,7 +41,7 @@ class Recipe():
         pass
 
     def multiply_portion(self, multiplier):
-        """takes in integer point multiplier"""
+        """takes in integer multiplier"""
         for i,ing in enumerate(self.ingredients):
             numbers = ing[0].split(' ')
             output_arr = []
