@@ -8,13 +8,14 @@ TOOLS = ['dutch oven', 'pot', 'pan', 'baking dish', 'skillet', 'baking sheet', '
     'knife', 'baking', 'dish', 'a press', 'grater', 'scissors', 'mortar', 'pestle', 'slotted spoon',
     'measuring cup', 'zester', 'sink', 'cakepan', 'board', 'strainer', 'tray', 'blender', 'mitts',
     'mixing bowl', 'bowl', 'grill', 'nutcracker', 'a ladle', 'cutter', 'griddle', 'cleaver', 'masher',
-    'colander']
+    'colander', 'foil']
 
 TIME = ['for', 'until']
 
 PRIMARY_METHODS = ["stir fry", "deep fry", "pan fry", "bake", "broil", "sautee", "saute", "fry", "roast", "boil", "poach", "steam", "grill", "smoke", "braise", "barbecue", "barbeque",  "simmer", "sear", "steep", "blanch", "cook"]
 
-OTHER_METHODS = ["stir", "preheat", "chop", "grate", "mix", "crush", "mince", "squeeze", "shake", "flatten", "marinate", "whisk", "caramelize", "glaze", "wash", "cut", "slice", "microwave", "blend", "pickle", "stuff", "melt", "whip", "cool", "spread", "drain", "combine", "baste", "spoon"]
+OTHER_METHODS = ["stir", "preheat", "chop", "grate", "mix", "crush", "mince", "squeeze", "shake", "flatten", "marinate", "whisk", "caramelize", "glaze", "wash", "cut", "slice", "microwave", "blend", "pickle", "stuff", "melt", "whip", "cool", "spread", "drain", "combine", "baste", "spoon",
+'remove', 'repeat', 'layer', 'top', 'sprinkle', 'arrange', 'cover', 'spray', 'season', 'assemble']
 
 MEAT = ["pork", "beef", "chicken", "lamb", "fish", "salmon", "trout", "tuna", "mutton", "anchovy", "sausage"]
 
