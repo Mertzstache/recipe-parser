@@ -40,7 +40,6 @@ class ARParser():
 		if match:
 			quant = match.group(1)
 			ind = string.index(quant) + len(quant)
-			print(quant)
 
 		match = re.search(r'\(([^\)]+)\)', string)
 		if match:
@@ -54,7 +53,7 @@ class ARParser():
 				extra_instructions = string[(i+1):]
 
 		if not keyword:
-			print("couldn't find a unit of measurement for", string)
+			# print("couldn't find a unit of measurement for", string)
 			return [quant, string[ind:], string[ind:], descriptor ,extra_instructions]
 
 		match = re.search(r"(" + re.escape(keyword) + r"s?)\s*", string)
