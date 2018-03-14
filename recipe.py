@@ -59,7 +59,19 @@ class Recipe():
 
 
     def make_vegetarian(self):
-        pass
+
+        sub_map = []
+
+        for idx, ingred in enumerate(self.ingredients):
+           
+            new_ingred = self._substitute_ingredient_class(ingred[2], MEAT, VEG_MEAT)
+
+            if new_ingred:
+                sub_map.append((ingred[2], new_ingred))
+                self.ingredients[idx][2] = new_ingred
+
+
+
 
     def make_in_style(self):
         pass
