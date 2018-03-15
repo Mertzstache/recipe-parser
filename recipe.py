@@ -57,6 +57,8 @@ class Recipe():
                     self.ingredients[idx][2] = new_ingred
 
             self.ingredients[idx][2] = "free-range organic non-gmo gluten-free " + self.ingredients[idx][2]
+        self.instructions = self._substitute_direction_class(self.instructions, MEAT, VEG_MEAT)
+
 
 
 
