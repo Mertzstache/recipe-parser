@@ -131,17 +131,19 @@ class Recipe():
 
     def _substitute_directions(self, direction, sub_map):
         new_direction = direction[:]
-        pattern = re.compile('|'.join(sub_map.keys()))
-        for i, direction in enumerate(new_direction):
-            new_direction[i] = pattern.sub(lambda x: sub_map[x.group()], direction)
+        if sub_map:
+            pattern = re.compile('|'.join(sub_map.keys()))
+            for i, direction in enumerate(new_direction):
+                new_direction[i] = pattern.sub(lambda x: sub_map[x.group()], direction)
         return new_direction
 
     def _substitute_parsed_instructions(self, instruction, sub_map):
         new_instruction = instruction[:]
-        pattern = re.compile('|'.join(sub_map.keys()))
-        for i, instruction in enumerate(new_instruction):
-            for k in instruction:
-                instruction[k] = pattern.sub(lambda x: sub_map[x.group()], str(instruction[k]))
+        if sub_map:
+            pattern = re.compile('|'.join(sub_map.keys()))
+            for i, instruction in enumerate(new_instruction):
+                for k in instruction:
+                    instruction[k] = pattern.sub(lambda x: sub_map[x.group()], str(instruction[k]))
         return new_instruction
 
     def _transform_ingred(self, ttype):
