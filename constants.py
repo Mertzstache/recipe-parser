@@ -90,6 +90,15 @@ HEALTH_INGRED_SUB = {
 	"cheese": "vegan cheese"
 }
 
+UNHEALTH_INGRED_SUB = {
+	"olive oil": "butter",
+	"oil": "lard",
+	"chicken": "bacon",
+	"beef": "bacon",
+	"potato": "bacon",
+	"rice": "fried rice"
+}
+
 HEALTH_TYPE_SUB = {
 
 }
