@@ -71,6 +71,8 @@ class Recipe():
             if new_ingred:
                 sub_map.append((ingred[2], new_ingred))
                 self.ingredients[idx][2] = new_ingred
+        self.instructions = self._substitute_direction_class(self.instructions, MEAT, VEG_MEAT)
+
 
 
 
@@ -118,7 +120,15 @@ class Recipe():
 
         return None
 
-
+    def _substitute_direction_class(self, direction, from_class, to_class):
+        new_direction = direction[:]
+        for i in from_class:
+            print(i)
+            for j, direction in enumerate(new_direction):
+                if i in direction:
+                    print("hi we got here")
+                    new_direction[j] = new_direction[j].replace(i, random.choice(to_class))
+        return new_direction
 
     def _transform_ingred(self, ttype):
 

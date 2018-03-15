@@ -26,8 +26,9 @@ def main():
     recipe = parser.parse_recipe()
 
 
-    recipe.make_healthy()
+    # recipe.make_healthy()
 
+    recipe.make_vegetarian()
     # if len(sys.argv) > 1:
     # 	transform(sys.argv[1])
     print(recipe)
