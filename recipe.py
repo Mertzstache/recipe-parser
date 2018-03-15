@@ -37,8 +37,6 @@ class Recipe():
         return return_me
 
     def make_healthy(self):
-        # self._substitute_ingredient(HEALTH_INGRED_SUB)
-
         sub_map = {}
 
         for idx, ingred in enumerate(self.ingredients):
@@ -60,8 +58,6 @@ class Recipe():
         self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
 
     def make_unhealthy(self):
-        # self._substitute_ingredient(HEALTH_INGRED_SUB)
-
         sub_map = {}
 
         for idx, ingred in enumerate(self.ingredients):

@@ -33,6 +33,8 @@ def main():
             recipe.make_vegetarian()
         elif sys.argv[1] == 'nonvegetarian':
             recipe.make_nonvegetarian()
+        elif sys.argv[1] == 'unhealthy':
+            recipe.make_unhealthy()
 
     print(recipe)
 
