@@ -4,6 +4,7 @@
 
 from constants import *
 import random
+import re
 
 class Recipe():
     """class to keep track of recipe info"""
@@ -40,57 +41,56 @@ class Recipe():
     def make_healthy(self):
         # self._substitute_ingredient(HEALTH_INGRED_SUB)
 
-        sub_map = []
+        sub_map = {}
 
         for idx, ingred in enumerate(self.ingredients):
             new_ingred = self._sub_key_pair(HEALTH_INGRED_SUB, ingred[2])
 
             if new_ingred:
-                sub_map.append((ingred[2], new_ingred))
+                sub_map[ingred[2]] = new_ingred
                 self.ingredients[idx][2] = new_ingred
 
             else:
                 new_ingred = self._substitute_ingredient_class(ingred[2], MEAT, VEG_MEAT)
 
                 if new_ingred:
-                    sub_map.append((ingred[2], new_ingred))
+                    sub_map[ingred[2]] = new_ingred
                     self.ingredients[idx][2] = new_ingred
 
             self.ingredients[idx][2] = "free-range organic non-gmo gluten-free " + self.ingredients[idx][2]
-        self.instructions = self._substitute_direction_class(self.instructions, MEAT, VEG_MEAT)
+        self.instructions = self._substitute_directions(self.instructions, sub_map)
+        self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
+
 
 
 
 
     def make_vegetarian(self):
 
-        sub_map = []
+        sub_map = {}
 
         for idx, ingred in enumerate(self.ingredients):
-           
+
             new_ingred = self._substitute_ingredient_class(ingred[2], MEAT, VEG_MEAT)
 
             if new_ingred:
-                sub_map.append((ingred[2], new_ingred))
+                sub_map[ingred[2]] = new_ingred
                 self.ingredients[idx][2] = new_ingred
-
-        self.instructions = self._substitute_direction_class(self.instructions, MEAT, VEG_MEAT)
-
-
-
-
+        self.instructions = self._substitute_directions(self.instructions, sub_map)
+        self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
 
     def make_in_style(self, to_style):
 
-        sub_map = []
+        sub_map = {}
 
         for idx, ingred in enumerate(self.ingredients):
             new_ingred = self._sub_key_pair(STYLE_MAP[to_style], ingred[2])
 
             if new_ingred:
-                sub_map.append((ingred[2], new_ingred))
+                sub_map[ingred[2]] = new_ingred
                 self.ingredients[idx][2] = new_ingred
-
+        self.instructions = self._substitute_directions(self.instructions, sub_map)
+        self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
 
 
 
@@ -107,9 +107,6 @@ class Recipe():
                     output_arr.append(str(int(n)*multiplier))
             self.ingredients[i][0] = ' '.join(output_arr)
 
-
-
-
     # def _substitute_ingredient(self, pair_dict):
     #     """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
     #     # self.ingredients.remove(previous)
@@ -123,26 +120,29 @@ class Recipe():
     def _sub_key_pair(self, pair_dict, item):
         if item in pair_dict.keys():
             return pair_dict[item]
-        
+
         return None
 
-
     def _substitute_ingredient_class(self, ingred, from_class, to_class):
-        
         if ingred in from_class:
             return random.choice(to_class)
 
         return None
 
-    def _substitute_direction_class(self, direction, from_class, to_class):
+    def _substitute_directions(self, direction, sub_map):
         new_direction = direction[:]
-        for i in from_class:
-            print(i)
-            for j, direction in enumerate(new_direction):
-                if i in direction:
-                    print("hi we got here")
-                    new_direction[j] = new_direction[j].replace(i, random.choice(to_class))
+        pattern = re.compile('|'.join(sub_map.keys()))
+        for i, direction in enumerate(new_direction):
+            new_direction[i] = pattern.sub(lambda x: sub_map[x.group()], direction)
         return new_direction
+
+    def _substitute_parsed_instructions(self, instruction, sub_map):
+        new_instruction = instruction[:]
+        pattern = re.compile('|'.join(sub_map.keys()))
+        for i, instruction in enumerate(new_instruction):
+            for k in instruction:
+                instruction[k] = pattern.sub(lambda x: sub_map[x.group()], str(instruction[k]))
+        return new_instruction
 
     def _transform_ingred(self, ttype):
 

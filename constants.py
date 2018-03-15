@@ -31,7 +31,7 @@ DAIRY = ["milk", "cream"]
 
 
 
-HAWAAIAN_STYLE_SUB = {
+HAWAIIAN_STYLE_SUB = {
 	"tomato": "pineapple",
 	"bacon": "pineapple",
 	"apple": "pineapple",
@@ -40,6 +40,8 @@ HAWAAIAN_STYLE_SUB = {
 	"spinach": "pineapple",
 	"lentils": "pineapple",
 	"eggplant": "pineapple",
+    "chicken": "pineapple",
+    "beef": "pineapple"
 }
 
 
@@ -56,7 +58,7 @@ SPICY_STYLE = {
 
 STYLE_MAP = {
 	"spicy": SPICY_STYLE,
-	"hawaaian": HAWAAIAN_STYLE_SUB
+	"hawaiian": HAWAIIAN_STYLE_SUB
 }
 
 

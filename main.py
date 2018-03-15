@@ -15,7 +15,11 @@ def main():
     url = "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/"
     def transform(x):
 	    {
-	        'double': recipe.multiply_portion(2)
+	        'double': recipe.multiply_portion(2),
+            'vegetarian': recipe.make_vegetarian(),
+            'healthy': recipe.make_healthy(),
+            'spicy': recipe.make_in_style("spicy"),
+            'hawaiian': recipe.make_in_style("hawaiian")
 	    }[x]
 
     # url = "https://www.allrecipes.com/recipe/256753/irish-soda-bread-muffins/?internalSource=staff%20pick&referringId=197&referringContentType=recipe%20hub"
@@ -26,11 +30,10 @@ def main():
     recipe = parser.parse_recipe()
 
 
-    # recipe.make_healthy()
-
-    recipe.make_in_style("spicy")
+    recipe.make_in_style("hawaiian")
     # if len(sys.argv) > 1:
     # 	transform(sys.argv[1])
+
     print(recipe)
 
 
