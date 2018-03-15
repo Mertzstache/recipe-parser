@@ -31,6 +31,33 @@ DAIRY = ["milk", "cream"]
 
 
 
+HAWAAIAN_STYLE_SUB = {
+	"tomato": "pineapple",
+	"bacon": "pineapple",
+	"apple": "pineapple",
+	"cucumber": "pineapple",
+	"pear": "pineapple",
+	"spinach": "pineapple",
+	"lentils": "pineapple",
+	"eggplant": "pineapple",
+}
+
+
+SPICY_STYLE = {
+	"peppers": "jalepeno peppers",
+	"mushrooms": "ghost peppers",
+	"tuna": "spicy tuna",
+	"paprika": "cayenne",
+	"sausage": "hot links",
+	"mozzarella": "pepperjack",
+	"watermelon": "hot sauce",
+	"coffee": "hot sauce"
+}
+
+STYLE_MAP = {
+	"spicy": SPICY_STYLE,
+	"hawaaian": HAWAAIAN_STYLE_SUB
+}
 
 
 HERBS = [

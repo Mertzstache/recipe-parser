@@ -28,7 +28,7 @@ def main():
 
     # recipe.make_healthy()
 
-    recipe.make_vegetarian()
+    recipe.make_in_style("spicy")
     # if len(sys.argv) > 1:
     # 	transform(sys.argv[1])
     print(recipe)

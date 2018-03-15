@@ -73,14 +73,26 @@ class Recipe():
             if new_ingred:
                 sub_map.append((ingred[2], new_ingred))
                 self.ingredients[idx][2] = new_ingred
+
         self.instructions = self._substitute_direction_class(self.instructions, MEAT, VEG_MEAT)
 
 
 
 
 
-    def make_in_style(self):
-        pass
+    def make_in_style(self, to_style):
+
+        sub_map = []
+
+        for idx, ingred in enumerate(self.ingredients):
+            new_ingred = self._sub_key_pair(STYLE_MAP[to_style], ingred[2])
+
+            if new_ingred:
+                sub_map.append((ingred[2], new_ingred))
+                self.ingredients[idx][2] = new_ingred
+
+
+
 
 
     def multiply_portion(self, multiplier):
