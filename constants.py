@@ -98,7 +98,3 @@ UNHEALTH_INGRED_SUB = {
 	"potato": "bacon",
 	"rice": "fried rice"
 }
-
-HEALTH_TYPE_SUB = {
-
-}

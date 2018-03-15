@@ -36,8 +36,6 @@ class Recipe():
                 return_me += "\n\t" + k + ": " + str(instruction[k])
         return return_me
 
-
-
     def make_healthy(self):
         # self._substitute_ingredient(HEALTH_INGRED_SUB)
 
@@ -61,9 +59,28 @@ class Recipe():
         self.instructions = self._substitute_directions(self.instructions, sub_map)
         self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
 
+    def make_unhealthy(self):
+        # self._substitute_ingredient(HEALTH_INGRED_SUB)
 
+        sub_map = {}
 
+        for idx, ingred in enumerate(self.ingredients):
+            new_ingred = self._sub_key_pair(UNHEALTH_INGRED_SUB, ingred[2])
 
+            if new_ingred:
+                sub_map[ingred[2]] = new_ingred
+                self.ingredients[idx][2] = new_ingred
+
+            else:
+                new_ingred = self._substitute_ingredient_class(ingred[2], VEG_MEAT, MEAT)
+
+                if new_ingred:
+                    sub_map[ingred[2]] = new_ingred
+                    self.ingredients[idx][2] = new_ingred
+
+            self.ingredients[idx][2] = "greasy " + self.ingredients[idx][2]
+        self.instructions = self._substitute_directions(self.instructions, sub_map)
+        self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
 
     def make_vegetarian(self):
 
@@ -72,6 +89,20 @@ class Recipe():
         for idx, ingred in enumerate(self.ingredients):
 
             new_ingred = self._substitute_ingredient_class(ingred[2], MEAT, VEG_MEAT)
+
+            if new_ingred:
+                sub_map[ingred[2]] = new_ingred
+                self.ingredients[idx][2] = new_ingred
+        self.instructions = self._substitute_directions(self.instructions, sub_map)
+        self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
+
+    def make_nonvegetarian(self):
+
+        sub_map = {}
+
+        for idx, ingred in enumerate(self.ingredients):
+
+            new_ingred = self._substitute_ingredient_class(ingred[2], VEG_MEAT, MEAT)
 
             if new_ingred:
                 sub_map[ingred[2]] = new_ingred
@@ -92,9 +123,6 @@ class Recipe():
         self.instructions = self._substitute_directions(self.instructions, sub_map)
         self.parsed_instructions = self._substitute_parsed_instructions(self.parsed_instructions, sub_map)
 
-
-
-
     def multiply_portion(self, multiplier):
         """takes in integer multiplier"""
         for i,ing in enumerate(self.ingredients):
@@ -106,16 +134,6 @@ class Recipe():
                 else:
                     output_arr.append(str(int(n)*multiplier))
             self.ingredients[i][0] = ' '.join(output_arr)
-
-    # def _substitute_ingredient(self, pair_dict):
-    #     """this is a simple idea of replacing one WHOLE INGREDIENT DIRECTION with a new one"""
-    #     # self.ingredients.remove(previous)
-    #     # self.ingredients.append(new)
-    #     #look through all instances in directions and replace as well
-
-    #     for idx, ingred in enumerate(self.ingredients):
-    #         self.ingredients[idx][2] = self._sub_key_pair(pair_dict, ingred[2])
-
 
     def _sub_key_pair(self, pair_dict, item):
         if item in pair_dict.keys():
