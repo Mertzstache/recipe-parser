@@ -1,0 +1,1 @@
+I did the optional parsing of ingredients, processing the tools, time for the ingredients, and creating the scraper for the url. I came up wtih the lists for Tools, Units, and time.
